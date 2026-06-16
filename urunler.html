@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ürünler | 3G HOPPE Türkiye Kataloğu</title>
+  <meta name="description" content="HOPPE Türkiye ürün grupları için B2B katalog ve filtreleme örneği.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="topbar"><div class="container"><span>HOPPE ürün grupları · B2B katalog görünümü</span><span>Fiyat / sepet / online ödeme bulunmaz</span></div></div>
+  <header class="site-header"><div class="container navbar"><a class="brand" href="index.html"><span class="brand-mark"></span><span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span></a><nav class="nav-links"><a href="index.html">Anasayfa</a><a class="active" href="urunler.html">Ürünler</a><a href="index.html#catalog">Türkiye Kataloğu</a><a href="index.html#lead">B2B Talep</a><a href="urun-detay.html">Ürün Detay Örneği</a></nav><div class="actions"><a class="btn btn-primary" href="index.html#lead">B2B Talep</a><button class="mobile-toggle">☰</button></div></div></header>
+
+  <main>
+    <section class="page-title">
+      <div class="container">
+        <div class="breadcrumb">Anasayfa / Ürünler</div>
+        <h1>HOPPE Türkiye ürün grupları</h1>
+        <p>Bu sayfa, HOPPE’nin kategori mantığını kopyalamadan; 3G’nin B2B satış süreci için ürün gruplarını, teknik filtreleri ve talep akışını bir araya getirir.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container catalog-layout">
+        <aside class="filter-panel">
+          <div class="filter-head"><strong>Filtrele</strong><button id="clearFilters" class="btn-link" type="button">Temizle</button></div>
+          <div class="filter-group"><div class="filter-group-title">Kullanım alanı</div>
+            <label><input type="checkbox" data-filter="usage" value="ic-kapi"> İç kapı</label>
+            <label><input type="checkbox" data-filter="usage" value="pencere"> Pencere</label>
+            <label><input type="checkbox" data-filter="usage" value="surme"> Sürme sistem</label>
+            <label><input type="checkbox" data-filter="usage" value="giris"> Giriş kapısı</label>
+          </div>
+          <div class="filter-group"><div class="filter-group-title">Ürün ailesi</div>
+            <label><input type="checkbox" data-filter="family" value="kapi-kolu"> Kapı kolu takımı</label>
+            <label><input type="checkbox" data-filter="family" value="pencere-kolu"> Pencere kolu</label>
+            <label><input type="checkbox" data-filter="family" value="hcs"> HCS / kompakt sistem</label>
+            <label><input type="checkbox" data-filter="family" value="psk"> PSK / kaldır-sür</label>
+          </div>
+          <div class="filter-group"><div class="filter-group-title">Malzeme</div>
+            <label><input type="checkbox" data-filter="material" value="aluminyum"> Alüminyum</label>
+            <label><input type="checkbox" data-filter="material" value="pirinc"> Pirinç</label>
+            <label><input type="checkbox" data-filter="material" value="paslanmaz"> Paslanmaz çelik</label>
+          </div>
+          <div class="filter-group"><div class="filter-group-title">Teknoloji / özellik</div>
+            <label><input type="checkbox" data-filter="tech" value="secustik"> Secustik</label>
+            <label><input type="checkbox" data-filter="tech" value="secuforte"> SecuForte</label>
+            <label><input type="checkbox" data-filter="tech" value="resista"> Resista</label>
+            <label><input type="checkbox" data-filter="tech" value="hizli-baglanti"> Hızlı bağlantı</label>
+          </div>
+        </aside>
+
+        <div>
+          <div class="catalog-tools">
+            <div><input id="productSearch" class="searchbox" placeholder="Austin, Hamburg, pencere, Secustik..." aria-label="Ürün ara"><p id="resultCount" style="margin:8px 0 0;color:#667085;font-size:14px"></p></div>
+            <div class="view-toggle"><button class="active" data-view="grid" type="button">Kart</button><button data-view="list" type="button">Liste</button><button data-view="table" type="button">Teknik</button></div>
+          </div>
+
+          <div id="productGrid" class="product-grid">
+            <article class="product-card" data-usage="ic-kapi" data-family="kapi-kolu" data-material="aluminyum" data-tech="hizli-baglanti">
+              <div class="product-image"><div class="abstract-product"></div></div><div class="product-body"><div><div class="tagline"><span class="chip gold">İç kapı</span><span class="chip">Alüminyum</span></div><h3>Bonn kapı kolu takımı</h3><p>İç kapılar için sade form, seri/malzeme/yüzey kırılımıyla B2B talep akışına uygun örnek kart.</p><div class="product-meta"><div><strong>Katalog</strong>İç mekan kapıları</div><div><strong>CTA</strong>B2B bilgi al</div></div></div><a class="btn btn-outline" href="urun-detay.html">Ürünü İncele</a></div>
+            </article>
+            <article class="product-card" data-usage="pencere" data-family="pencere-kolu" data-material="aluminyum" data-tech="secuforte,secustik">
+              <div class="product-image"><div class="abstract-product"></div></div><div class="product-body"><div><div class="tagline"><span class="chip gold">Pencere</span><span class="chip">SecuForte</span></div><h3>Hamburg pencere kolu</h3><p>Güvenlik ihtiyacına göre filtrelenebilen pencere kolu örneği. Talep formuna ürün ilgisi aktarılır.</p><div class="product-meta"><div><strong>Katalog</strong>Pencere kolları</div><div><strong>CTA</strong>Teknik destek</div></div></div><a class="btn btn-outline" href="urun-detay.html">Ürünü İncele</a></div>
+            </article>
+            <article class="product-card" data-usage="pencere" data-family="pencere-kolu" data-material="pirinc" data-tech="secustik,resista">
+              <div class="product-image"><div class="abstract-product"></div></div><div class="product-body"><div><div class="tagline"><span class="chip gold">Pencere</span><span class="chip">Resista</span></div><h3>Dallas pencere kolu</h3><p>Renk/yüzey ve Resista gibi özelliklerle listelenebilecek pencere ürünü örnek kaydı.</p><div class="product-meta"><div><strong>Katalog</strong>Pencere kolları</div><div><strong>CTA</strong>B2B bilgi al</div></div></div><a class="btn btn-outline" href="urun-detay.html">Ürünü İncele</a></div>
+            </article>
+            <article class="product-card" data-usage="surme" data-family="psk" data-material="aluminyum" data-tech="resista">
+              <div class="product-image"><div class="abstract-product"></div></div><div class="product-body"><div><div class="tagline"><span class="chip gold">Sürme</span><span class="chip">PSK</span></div><h3>PSK paralel sürme kolu</h3><p>Balkon, teras ve paralel sürme uygulamaları için proje odaklı ürün grubu kartı.</p><div class="product-meta"><div><strong>Katalog</strong>PSK kollar</div><div><strong>CTA</strong>Proje talebi</div></div></div><a class="btn btn-outline" href="urun-detay.html">Ürünü İncele</a></div>
+            </article>
+            <article class="product-card" data-usage="ic-kapi" data-family="hcs" data-material="aluminyum" data-tech="hizli-baglanti">
+              <div class="product-image"><div class="abstract-product"></div></div><div class="product-body"><div><div class="tagline"><span class="chip gold">HCS</span><span class="chip">Kompakt</span></div><h3>HOPPE Compact System</h3><p>İç mekan kapıları için kompakt sistem ürün grubunu anlatan kategori/ürün kartı.</p><div class="product-meta"><div><strong>Katalog</strong>HCS</div><div><strong>CTA</strong>Katalogdan incele</div></div></div><a class="btn btn-outline" href="urun-detay.html">Ürünü İncele</a></div>
+            </article>
+            <article class="product-card" data-usage="giris" data-family="kapi-kolu" data-material="paslanmaz" data-tech="resista">
+              <div class="product-image"><div class="abstract-product"></div></div><div class="product-body"><div><div class="tagline"><span class="chip gold">Giriş</span><span class="chip">Paslanmaz</span></div><h3>Çekme kol ve emniyet rozeti</h3><p>Giriş kapıları, profil kapılar ve emniyet odaklı çözümler için B2B yönlendirme.</p><div class="product-meta"><div><strong>Katalog</strong>Giriş kapıları</div><div><strong>CTA</strong>Teknik görüşme</div></div></div><a class="btn btn-outline" href="urun-detay.html">Ürünü İncele</a></div>
+            </article>
+          </div>
+
+          <div id="technicalTable" class="technical-table hide">
+            <table><thead><tr><th>Ürün / grup</th><th>Kullanım</th><th>Malzeme</th><th>Özellik</th><th>B2B aksiyon</th></tr></thead><tbody>
+              <tr><td>Bonn kapı kolu takımı</td><td>İç kapı</td><td>Alüminyum</td><td>Hızlı bağlantı</td><td>Ürün için bilgi al</td></tr>
+              <tr><td>Hamburg pencere kolu</td><td>Pencere</td><td>Alüminyum</td><td>SecuForte / Secustik</td><td>Teknik destek iste</td></tr>
+              <tr><td>Dallas pencere kolu</td><td>Pencere</td><td>Pirinç</td><td>Resista / Secustik</td><td>B2B bilgi al</td></tr>
+              <tr><td>PSK paralel sürme kolu</td><td>Sürme</td><td>Alüminyum</td><td>Proje kullanımı</td><td>Proje talebi</td></tr>
+              <tr><td>HOPPE Compact System</td><td>İç kapı</td><td>Alüminyum</td><td>Kompakt sistem</td><td>Katalogdan incele</td></tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer-grid"><div><a class="brand" href="index.html"><span class="brand-mark"></span><span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span></a><p>Ürün kategori mockup’ı. Gerçek uygulamada veriler özel post type ve taksonomilerden gelir.</p></div><div><h4>Ürünler</h4><a>İç kapı kolları</a><a>Pencere kolları</a><a>Sürme sistemler</a></div><div><h4>Görünümler</h4><a>Kart</a><a>Liste</a><a>Teknik tablo</a></div><div><h4>Aksiyon</h4><a href="index.html#lead">B2B Talep</a><a href="urun-detay.html">Detay örneği</a></div></div><div class="footer-bottom"><span>© 3G mockup</span><span>Katalog, filtre ve B2B lead odaklı yapı</span></div></div></footer>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
