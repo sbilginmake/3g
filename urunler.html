@@ -193,9 +193,9 @@
 
     .category-page .hover-panel {
       position: absolute;
-      top: 16px;
-      width: min(320px, calc(100vw - 36px));
-      min-height: calc(100% - 32px);
+      top: -1px;
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
       padding: 18px;
       border-radius: var(--cat-radius);
       background: var(--cat-navy);
@@ -203,18 +203,18 @@
       box-shadow: 0 24px 60px rgba(6,27,47,.24);
       opacity: 0;
       pointer-events: none;
-      transform: translateX(8px);
-      transition: opacity .16s, transform .16s, box-shadow .16s;
+      transform: translateX(-18px);
+      transition: opacity .24s ease, transform .24s ease, box-shadow .24s ease;
       z-index: 30;
     }
 
     .category-page .hover-right .hover-panel {
-      left: calc(100% + 12px);
+      left: 100%;
     }
 
     .category-page .hover-left .hover-panel {
-      right: calc(100% + 12px);
-      transform: translateX(-8px);
+      right: 100%;
+      transform: translateX(18px);
     }
 
     .category-page .category-card:hover .hover-panel,
@@ -224,36 +224,18 @@
       transform: translateX(0);
     }
 
-    .category-page .hover-panel::before {
-      content: "";
-      position: absolute;
-      top: 32px;
-      width: 12px;
-      height: 12px;
-      background: var(--cat-navy);
-      transform: rotate(45deg);
-    }
-
-    .category-page .hover-right .hover-panel::before {
-      left: -6px;
-    }
-
-    .category-page .hover-left .hover-panel::before {
-      right: -6px;
-    }
-
     .category-page .hover-panel h4 {
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       color: #fff;
-      font-size: 22px;
+      font-size: 21px;
       line-height: 1.1;
       letter-spacing: -.035em;
     }
 
     .category-page .hover-specs {
       display: grid;
-      gap: 9px;
-      margin: 0 0 14px;
+      gap: 8px;
+      margin: 0 0 12px;
     }
 
     .category-page .hover-specs div {
@@ -261,7 +243,7 @@
       grid-template-columns: 112px minmax(0, 1fr);
       gap: 10px;
       border-top: 1px solid rgba(255,255,255,.14);
-      padding-top: 9px;
+      padding-top: 8px;
       font-size: 13px;
       line-height: 1.35;
     }
@@ -278,7 +260,7 @@
     }
 
     .category-page .hover-panel ul {
-      margin: 0 0 15px;
+      margin: 0 0 12px;
       padding-left: 18px;
       color: #e5f3ff;
       font-size: 13px;
