@@ -42,6 +42,14 @@
       align-items: start;
     }
 
+    .detail-page-v6 .product-detail-shell.is-customizer-closed {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .detail-page-v6 .product-detail-shell.is-customizer-closed .product-detail-left {
+      grid-template-columns: minmax(420px, 0.9fr) minmax(480px, 1.1fr);
+    }
+
     .detail-page-v6 .product-detail-canvas {
       min-width: 0;
     }
@@ -670,6 +678,10 @@
         padding: 16px 0 54px;
       }
 
+      .detail-page-v6 .product-detail-shell.is-customizer-closed .product-detail-left {
+        display: block;
+      }
+
       .detail-page-v6 .product-detail-left {
         display: block;
       }
@@ -1061,6 +1073,7 @@
   <script>
     (function(){
       const body = document.body;
+      const shell = document.querySelector('.product-detail-shell');
       const panel = document.querySelector('[data-customizer-panel]');
       const openButtons = document.querySelectorAll('[data-open-customizer]');
       const closeButtons = document.querySelectorAll('[data-close-customizer]');
@@ -1074,6 +1087,7 @@
       function setPanelOpen(isOpen) {
         if (!panel) return;
         panel.classList.toggle('is-open', isOpen);
+        shell?.classList.toggle('is-customizer-closed', !isOpen);
         body.classList.toggle('detail-drawer-open', isOpen && !desktopQuery.matches);
       }
 
@@ -1097,7 +1111,11 @@
       }
 
       syncPanelForViewport();
-      window.addEventListener('resize', syncPanelForViewport, { passive: true });
+      if (desktopQuery.addEventListener) {
+        desktopQuery.addEventListener('change', syncPanelForViewport);
+      } else {
+        desktopQuery.addListener(syncPanelForViewport);
+      }
       openButtons.forEach((button) => button.addEventListener('click', () => setPanelOpen(true)));
       closeButtons.forEach((button) => button.addEventListener('click', () => setPanelOpen(false)));
 
