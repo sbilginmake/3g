@@ -8,14 +8,21 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <div class="topbar"><div class="container"><span>HOPPE ürünleri için Türkiye B2B iletişim noktası</span><span>info@3g-aksesuar.com · İstanbul</span></div></div>
+  <div class="topbar"><div class="container"><span>HOPPE ürün grupları · B2B katalog görünümü</span><span>Fiyat / sepet / online ödeme bulunmaz</span></div></div>
   <header class="site-header">
     <div class="container navbar">
       <a class="brand" href="index.html"><span class="brand-mark"></span><span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span></a>
-      <nav class="nav-links"><a class="active" href="index.html">Anasayfa</a><a href="urunler.html">Ürünler</a><a href="#catalog">Türkiye Kataloğu</a><a href="#about">Hakkımızda</a><a href="#blog">Blog</a><a href="#contact">İletişim</a></nav>
-      <div class="actions"><a class="btn btn-outline" href="urunler.html">Ürünleri İncele</a><a class="btn btn-primary" href="#lead">B2B Talep</a><button class="mobile-toggle">☰</button></div>
+      <nav class="nav-links" aria-label="Ana menü"><a class="active" href="index.html">Anasayfa</a><div class="nav-item"><a class="nav-product-trigger" href="urunler.html">Ürünler <span>▾</span></a><div class="nav-dropdown" aria-label="Ürün kategorileri"><a href="urunler.html">Kapı kolları</a><a href="urunler.html">Çekme kolları</a><a href="urunler.html">Pencere kolları</a><a href="urunler.html">Sürme sistemler</a><a href="urunler.html">Cam ve bölme kapı kolları</a><a href="urunler.html">Kapı aksesuarları</a></div></div><a href="#catalog">Türkiye Kataloğu</a><a href="#lead">B2B Talep</a><a href="urun-detay.html">Ürün Detay Örneği</a></nav>
+      <div class="actions"><a class="btn btn-primary" href="#lead">B2B Talep</a><button class="mobile-toggle" type="button" aria-label="Menü" aria-expanded="false" aria-controls="mobileNavigation" data-mobile-toggle>☰</button></div>
     </div>
   </header>
+  <div class="mobile-menu" id="mobileNavigation" data-mobile-menu hidden>
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-head"><a class="brand" href="index.html"><span class="brand-mark"></span><span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span></a><button class="mobile-menu-close" type="button" aria-label="Menüyü kapat" data-mobile-close>×</button></div>
+      <nav class="mobile-menu-nav" aria-label="Mobil menü"><a class="active" href="index.html">Anasayfa</a><details class="mobile-menu-products"><summary>Ürünler</summary><div class="mobile-subnav"><a href="urunler.html">Kapı kolları</a><a href="urunler.html">Çekme kolları</a><a href="urunler.html">Pencere kolları</a><a href="urunler.html">Sürme sistemler</a><a href="urunler.html">Cam ve bölme kapı kolları</a><a href="urunler.html">Kapı aksesuarları</a></div></details><a href="#catalog">Türkiye Kataloğu</a><a href="#lead">B2B Talep</a><a href="urun-detay.html">Ürün Detay Örneği</a></nav>
+      <a class="btn btn-primary mobile-menu-cta" href="#lead">B2B Talep</a>
+    </div>
+  </div>
 
   <main>
     <section class="hero">

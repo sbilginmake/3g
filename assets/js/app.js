@@ -100,3 +100,26 @@
   });
   updateSummary();
 })();
+
+(function(){
+  const menu=document.querySelector('[data-mobile-menu]');
+  const openBtn=document.querySelector('[data-mobile-toggle]');
+  const closeBtn=document.querySelector('[data-mobile-close]');
+  if(!menu||!openBtn)return;
+
+  function setMenu(open){
+    menu.hidden=!open;
+    openBtn.setAttribute('aria-expanded',String(open));
+    document.body.classList.toggle('nav-open',open);
+  }
+
+  openBtn.addEventListener('click',()=>setMenu(true));
+  closeBtn?.addEventListener('click',()=>setMenu(false));
+  menu.addEventListener('click',event=>{
+    if(event.target===menu)setMenu(false);
+  });
+  menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&!menu.hidden)setMenu(false);
+  });
+})();

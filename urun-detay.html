@@ -16,7 +16,7 @@
       --detail-blue: #07345d;
       --detail-red: #e30613;
       --detail-soft-blue: #edf5fb;
-      --detail-header-offset: 88px;
+      --detail-header-offset: 72px;
       --detail-radius: 8px;
       background: var(--detail-bg);
     }
@@ -28,7 +28,7 @@
     .detail-page-v6 .site-header {
       position: sticky;
       top: 0;
-      z-index: 40;
+      z-index: 120;
     }
 
     .detail-page-v6 .product-detail-shell {
@@ -941,12 +941,8 @@
     }
 
     @media (max-width: 560px) {
-      .detail-page-v6 .topbar {
-        display: none;
-      }
-
       .detail-page-v6 .navbar {
-        height: 64px;
+        height: 68px;
       }
 
       .detail-page-v6 .actions .btn-primary,
@@ -976,8 +972,8 @@
 <body class="detail-page-side detail-page-v6">
   <div class="topbar">
     <div class="container">
-      <span>Ürün detay mockup · B2B bilgi talebi odaklı</span>
-      <span>Sepet / fiyat / ödeme yoktur</span>
+      <span>HOPPE ürün grupları · B2B katalog görünümü</span>
+      <span>Fiyat / sepet / online ödeme bulunmaz</span>
     </div>
   </div>
 
@@ -989,17 +985,56 @@
       </a>
       <nav class="nav-links" aria-label="Ana menü">
         <a href="index.html">Anasayfa</a>
-        <a href="urunler.html">Ürünler</a>
+        <div class="nav-item">
+          <a class="nav-product-trigger" href="urunler.html">Ürünler <span>▾</span></a>
+          <div class="nav-dropdown" aria-label="Ürün kategorileri">
+            <a href="urunler.html">Kapı kolları</a>
+            <a href="urunler.html">Çekme kolları</a>
+            <a href="urunler.html">Pencere kolları</a>
+            <a href="urunler.html">Sürme sistemler</a>
+            <a href="urunler.html">Cam ve bölme kapı kolları</a>
+            <a href="urunler.html">Kapı aksesuarları</a>
+          </div>
+        </div>
         <a href="index.html#catalog">Türkiye Kataloğu</a>
-        <a class="active" href="urun-detay.html">Ürün Detay</a>
         <a href="index.html#lead">B2B Talep</a>
+        <a class="active" href="urun-detay.html">Ürün Detay Örneği</a>
       </nav>
       <div class="actions">
-        <a class="btn btn-primary" href="#lead-detail">Bu ürün için bilgi al</a>
-        <button class="mobile-toggle" type="button" aria-label="Menü">☰</button>
+        <a class="btn btn-primary" href="#lead-detail">B2B Talep</a>
+        <button class="mobile-toggle" type="button" aria-label="Menü" aria-expanded="false" aria-controls="mobileNavigation" data-mobile-toggle>☰</button>
       </div>
     </div>
   </header>
+  <div class="mobile-menu" id="mobileNavigation" data-mobile-menu hidden>
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-head">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"></span>
+          <span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span>
+        </a>
+        <button class="mobile-menu-close" type="button" aria-label="Menüyü kapat" data-mobile-close>×</button>
+      </div>
+      <nav class="mobile-menu-nav" aria-label="Mobil menü">
+        <a href="index.html">Anasayfa</a>
+        <details class="mobile-menu-products">
+          <summary>Ürünler</summary>
+          <div class="mobile-subnav">
+            <a href="urunler.html">Kapı kolları</a>
+            <a href="urunler.html">Çekme kolları</a>
+            <a href="urunler.html">Pencere kolları</a>
+            <a href="urunler.html">Sürme sistemler</a>
+            <a href="urunler.html">Cam ve bölme kapı kolları</a>
+            <a href="urunler.html">Kapı aksesuarları</a>
+          </div>
+        </details>
+        <a href="index.html#catalog">Türkiye Kataloğu</a>
+        <a href="index.html#lead">B2B Talep</a>
+        <a class="active" href="urun-detay.html">Ürün Detay Örneği</a>
+      </nav>
+      <a class="btn btn-primary mobile-menu-cta" href="#lead-detail">B2B Talep</a>
+    </div>
+  </div>
 
   <main class="product-detail-shell">
     <article class="product-detail-canvas">
