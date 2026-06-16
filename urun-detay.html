@@ -6,42 +6,897 @@
   <title>Atlanta Kapı Kolu Takımı | 3G Ürün Detay Mockup</title>
   <meta name="description" content="3G için B2B katalog mantığında hazırlanmış HOPPE ürün detay sayfası mockupı.">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .detail-page-v6 {
+      --detail-bg: #f6f8fa;
+      --detail-surface: #fff;
+      --detail-line: #dce4ec;
+      --detail-ink: #101828;
+      --detail-muted: #5c6a7c;
+      --detail-blue: #07345d;
+      --detail-red: #e30613;
+      --detail-soft-blue: #edf5fb;
+      --detail-header-offset: 88px;
+      background: var(--detail-bg);
+    }
+
+    .detail-page-v6 .topbar {
+      background: #061b2f;
+    }
+
+    .detail-page-v6 .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .detail-page-v6 .product-detail-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 348px);
+      gap: 34px;
+      width: min(1220px, calc(100% - 48px));
+      min-height: auto;
+      margin: 0 auto;
+      padding: 16px 0 72px;
+      background: transparent;
+      align-items: start;
+    }
+
+    .detail-page-v6 .product-detail-canvas {
+      min-width: 0;
+    }
+
+    .detail-page-v6 .product-detail-left {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(300px, 1.1fr);
+      gap: 34px;
+      min-height: auto;
+      padding: 0;
+      align-items: center;
+    }
+
+    .detail-page-v6 .product-media-column,
+    .detail-page-v6 .product-info-column,
+    .detail-page-v6 .product-description-card,
+    .detail-page-v6 .further-series {
+      background: var(--detail-surface);
+      border: 1px solid var(--detail-line);
+      box-shadow: 0 16px 46px rgba(12, 34, 56, 0.06);
+    }
+
+    .detail-page-v6 .product-media-column {
+      padding: 24px;
+    }
+
+    .detail-page-v6 .big-product-object {
+      display: grid;
+      height: 360px;
+      place-items: center;
+      background: linear-gradient(135deg, #f8fbfd, #e9f0f5);
+      border: 1px solid #e5ebf1;
+    }
+
+    .detail-page-v6 .big-product-object img {
+      max-width: 86%;
+      max-height: 320px;
+      object-fit: contain;
+    }
+
+    .detail-page-v6 .side-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .detail-page-v6 .side-thumbs button {
+      height: 90px;
+      padding: 8px;
+      border: 1px solid var(--detail-line);
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .detail-page-v6 .side-thumbs button.active {
+      border-color: #9ed1f5;
+      box-shadow: inset 0 -4px 0 #9ed1f5;
+    }
+
+    .detail-page-v6 .side-thumbs img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .detail-page-v6 .product-info-column {
+      max-width: none;
+      padding: 34px;
+    }
+
+    .detail-page-v6 .hoppe-style-mark {
+      margin-bottom: 24px;
+      color: #6eaed8;
+    }
+
+    .detail-page-v6 .hoppe-style-mark strong {
+      display: block;
+      color: var(--detail-blue);
+      font-size: 42px;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+    }
+
+    .detail-page-v6 .hoppe-style-mark span {
+      font-size: 14px;
+      color: #6eaed8;
+    }
+
+    .detail-page-v6 .product-eyebrow {
+      margin: 0 0 8px;
+      color: var(--detail-muted);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .detail-page-v6 h1 {
+      margin: 0 0 18px;
+      color: var(--detail-blue);
+      font-size: clamp(38px, 4.5vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .detail-page-v6 .product-short-desc {
+      max-width: 58ch;
+      margin: 0 0 22px;
+      color: #405166;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .detail-page-v6 .mobile-customize-trigger {
+      display: none;
+      width: 100%;
+      margin: 0 0 20px;
+    }
+
+    .detail-page-v6 .series-link {
+      display: inline-flex;
+      margin: 0 0 22px;
+      color: #0b5da8;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .detail-page-v6 .product-meta-card {
+      border-top: 1px solid var(--detail-line);
+      padding-top: 18px;
+    }
+
+    .detail-page-v6 .product-meta-card .category-line {
+      margin-bottom: 8px;
+      color: var(--detail-blue);
+      font-size: 17px;
+    }
+
+    .detail-page-v6 .product-meta-card dl {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+    }
+
+    .detail-page-v6 .product-meta-card dl div {
+      padding: 12px;
+      background: #f7f9fb;
+      border: 1px solid #e5ebf1;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .detail-page-v6 .product-meta-card dt {
+      display: block;
+      color: var(--detail-muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .detail-page-v6 .product-meta-card dt::after {
+      content: "";
+    }
+
+    .detail-page-v6 .product-meta-card dd {
+      display: block;
+      margin: 4px 0 0;
+      color: var(--detail-ink);
+      font-weight: 800;
+    }
+
+    .detail-page-v6 .product-action-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .detail-page-v6 .below-detail-blocks {
+      padding: 28px 0 0;
+    }
+
+    .detail-page-v6 .product-description-card {
+      max-width: none;
+      margin: 0;
+      padding: 0 28px;
+      border-top: 1px solid var(--detail-line);
+      border-bottom: 1px solid var(--detail-line);
+    }
+
+    .detail-page-v6 .detail-accordion.clean {
+      border-bottom: 1px solid var(--detail-line);
+    }
+
+    .detail-page-v6 .detail-accordion.clean:last-child {
+      border-bottom: 0;
+    }
+
+    .detail-page-v6 .detail-accordion.clean summary {
+      display: grid;
+      grid-template-columns: 1fr 24px;
+      gap: 14px;
+      align-items: center;
+      padding: 22px 0;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .detail-page-v6 .detail-accordion.clean summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .detail-page-v6 .detail-accordion.clean summary span {
+      color: var(--detail-blue);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .detail-page-v6 .detail-accordion.clean summary small {
+      grid-column: 1;
+      color: var(--detail-muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .detail-page-v6 .detail-accordion.clean summary::after {
+      content: "+";
+      color: var(--detail-blue);
+      font-size: 24px;
+      line-height: 1;
+      justify-self: end;
+    }
+
+    .detail-page-v6 .detail-accordion.clean[open] summary::after {
+      content: "-";
+    }
+
+    .detail-page-v6 .description-content,
+    .detail-page-v6 .download-groups,
+    .detail-page-v6 .video-placeholder {
+      padding-bottom: 24px;
+    }
+
+    .detail-page-v6 .description-content {
+      color: #3f4a56;
+      font-size: 15px;
+    }
+
+    .detail-page-v6 .description-content ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
+    .detail-page-v6 .detail-facts-matrix.compact {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 24px;
+      border: 0;
+    }
+
+    .detail-page-v6 .detail-facts-matrix.compact div {
+      min-height: 86px;
+      padding: 15px;
+      background: #f7f9fb;
+      border: 1px solid #e5ebf1;
+    }
+
+    .detail-page-v6 .detail-facts-matrix.compact b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--detail-muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .detail-page-v6 .detail-facts-matrix.compact span {
+      display: block;
+      color: var(--detail-ink);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .detail-page-v6 .download-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .detail-page-v6 .download-group {
+      padding: 16px;
+      background: #f7f9fb;
+      border: 1px solid #e5ebf1;
+    }
+
+    .detail-page-v6 .download-group h4 {
+      margin: 0 0 8px;
+      color: var(--detail-blue);
+      font-size: 16px;
+    }
+
+    .detail-page-v6 .download-group a {
+      display: block;
+      margin: 7px 0;
+      color: #0b5da8;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .detail-page-v6 .video-placeholder {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 0;
+      border: 1px dashed #b8c7d6;
+      background: #f7f9fb;
+      color: var(--detail-muted);
+    }
+
+    .detail-page-v6 .video-placeholder span {
+      display: grid;
+      min-height: 112px;
+      place-items: center;
+      background: linear-gradient(135deg, #07345d, #2a69a3);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .detail-page-v6 .video-placeholder p {
+      margin: 0;
+      padding-right: 18px;
+    }
+
+    .detail-page-v6 .further-series {
+      margin-top: 28px;
+      padding: 30px;
+      background: var(--detail-surface);
+    }
+
+    .detail-page-v6 .container-ish {
+      max-width: none;
+      margin: 0;
+    }
+
+    .detail-page-v6 .further-series h2 {
+      margin: 0 0 18px;
+      color: var(--detail-blue);
+      text-align: left;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+    }
+
+    .detail-page-v6 .series-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .detail-page-v6 .series-card {
+      min-height: 184px;
+      padding: 16px;
+      background: #f7f9fb;
+      border: 1px solid #e5ebf1;
+    }
+
+    .detail-page-v6 .series-card img {
+      height: 112px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+    }
+
+    .detail-page-v6 .series-card span {
+      color: #244766;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .detail-page-v6 .detail-contact-band {
+      margin: 28px 0 0;
+      max-width: none;
+    }
+
+    .detail-page-v6 .customizer-dock {
+      position: sticky;
+      top: var(--detail-header-offset);
+      z-index: 30;
+      width: 100%;
+      max-height: calc(100vh - var(--detail-header-offset) - 16px);
+      height: auto;
+      overflow: auto;
+      background: var(--detail-surface);
+      border: 1px solid var(--detail-line);
+      box-shadow: 0 18px 48px rgba(12, 34, 56, 0.12);
+    }
+
+    .detail-page-v6 .customizer-dock:not(.is-open) {
+      display: none;
+      min-height: 0;
+    }
+
+    .detail-page-v6 .customizer-side-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 64px;
+      padding: 0 16px !important;
+      background: #fff;
+      border-bottom: 1px solid var(--detail-line);
+    }
+
+    .detail-page-v6 .customizer-title-wrap {
+      display: flex;
+      flex: 1;
+      min-width: 0;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .detail-page-v6 .customizer-title-wrap h2 {
+      min-width: 0;
+      margin: 0;
+      color: var(--detail-blue);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .detail-page-v6 .sliders-mark {
+      flex: 0 0 32px;
+      width: 32px;
+      height: 22px;
+    }
+
+    .detail-page-v6 .customizer-close {
+      display: grid;
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      color: var(--detail-blue);
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .detail-page-v6 .customizer-open-note {
+      display: none !important;
+    }
+
+    .detail-page-v6 .customizer-content-side {
+      display: grid;
+      gap: 16px;
+      padding: 16px 18px 22px;
+    }
+
+    .detail-page-v6 .side-block h3 {
+      margin: 0 0 12px;
+      color: #2a69a3;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .detail-page-v6 .dock-model-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .detail-page-v6 .model-option-dock {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      min-height: 74px;
+      padding: 10px;
+      border: 1px solid #e5ebf1;
+      background: #fff;
+      text-align: left;
+    }
+
+    .detail-page-v6 .model-option-dock.selected {
+      border-color: #9ed1f5;
+      box-shadow: inset 4px 0 0 #9ed1f5;
+    }
+
+    .detail-page-v6 .model-option-dock::after {
+      display: none;
+    }
+
+    .detail-page-v6 .model-option-dock img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      margin: 0;
+    }
+
+    .detail-page-v6 .model-option-dock span {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .detail-page-v6 .dock-option-row {
+      padding: 14px 0;
+      border-top: 1px solid #e6e9ed;
+    }
+
+    .detail-page-v6 .material-row,
+    .detail-page-v6 .interactive-row summary {
+      display: grid;
+      grid-template-columns: 94px minmax(0, 1fr) 18px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .detail-page-v6 .material-row {
+      grid-template-columns: 94px minmax(0, 1fr);
+    }
+
+    .detail-page-v6 .dock-row-label,
+    .detail-page-v6 .dock-row-value {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .detail-page-v6 .dock-row-label {
+      color: #5b8cb7;
+      font-weight: 800;
+    }
+
+    .detail-page-v6 .dock-row-value {
+      color: #3f4a56;
+      font-weight: 700;
+    }
+
+    .detail-page-v6 .interactive-row summary::after {
+      content: "+";
+      color: #607086;
+      font-size: 20px;
+      line-height: 1;
+      transform: none;
+    }
+
+    .detail-page-v6 .interactive-row[open] summary::after {
+      content: "-";
+    }
+
+    .detail-page-v6 .dock-choice-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding-top: 12px;
+    }
+
+    .detail-page-v6 .dock-choice-grid .finish-option,
+    .detail-page-v6 .dock-choice-grid .lock-option {
+      min-height: auto !important;
+      padding: 10px;
+      border-radius: 0;
+    }
+
+    .detail-page-v6 .finish-option {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 9px;
+    }
+
+    .detail-page-v6 .finish-option .swatch {
+      width: 34px;
+      height: 34px;
+    }
+
+    .detail-page-v6 .finish-option b,
+    .detail-page-v6 .lock-option b,
+    .detail-page-v6 .lock-option span {
+      font-size: 14px;
+    }
+
+    .detail-page-v6 .finish-option small,
+    .detail-page-v6 .lock-option small {
+      font-size: 12px;
+    }
+
+    .detail-page-v6 .dock-selection-summary {
+      margin-top: 0;
+      padding: 15px;
+      background: var(--detail-soft-blue);
+      border: 1px solid #d6e7f4;
+    }
+
+    .detail-page-v6 .dock-selection-summary .btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 1120px) {
+      .detail-page-v6 .product-detail-shell {
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 24px;
+      }
+
+      .detail-page-v6 .product-detail-left {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .detail-page-v6 {
+        --detail-header-offset: 0px;
+      }
+
+      .detail-page-v6 .product-detail-shell {
+        display: block;
+        width: min(100% - 28px, 760px);
+        padding: 20px 0 54px;
+      }
+
+      .detail-page-v6 .product-detail-left {
+        display: block;
+      }
+
+      .detail-page-v6 .product-media-column,
+      .detail-page-v6 .product-info-column,
+      .detail-page-v6 .product-description-card,
+      .detail-page-v6 .further-series {
+        box-shadow: 0 10px 26px rgba(12, 34, 56, 0.05);
+      }
+
+      .detail-page-v6 .product-media-column {
+        padding: 14px;
+      }
+
+      .detail-page-v6 .big-product-object {
+        height: 300px;
+      }
+
+      .detail-page-v6 .big-product-object img {
+        max-height: 270px;
+      }
+
+      .detail-page-v6 .side-thumbs {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .detail-page-v6 .product-info-column {
+        margin-top: 14px;
+        padding: 24px;
+      }
+
+      .detail-page-v6 .hoppe-style-mark {
+        margin-bottom: 18px;
+      }
+
+      .detail-page-v6 h1 {
+        font-size: 42px;
+      }
+
+      .detail-page-v6 .product-short-desc {
+        font-size: 16px;
+      }
+
+      .detail-page-v6 .mobile-customize-trigger {
+        display: inline-flex;
+      }
+
+      .detail-page-v6 .product-action-row {
+        display: none;
+      }
+
+      .detail-page-v6 .product-meta-card dl,
+      .detail-page-v6 .detail-facts-matrix.compact,
+      .detail-page-v6 .download-groups,
+      .detail-page-v6 .series-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-page-v6 .product-description-card,
+      .detail-page-v6 .further-series {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .detail-page-v6 .video-placeholder {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-page-v6 .video-placeholder p {
+        padding: 0 16px 18px;
+      }
+
+      .detail-page-v6 .customizer-dock {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        display: none;
+        width: auto;
+        max-height: none;
+        height: auto;
+        overflow: hidden;
+        border: 0;
+        background: rgba(6, 27, 47, 0.48);
+        box-shadow: none;
+      }
+
+      .detail-page-v6 .customizer-dock.is-open {
+        display: block;
+      }
+
+      .detail-page-v6 .customizer-dock:not(.is-open) {
+        display: none;
+      }
+
+      .detail-page-v6 .customizer-dock::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+
+      .detail-page-v6 .customizer-side-header,
+      .detail-page-v6 .customizer-content-side {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        background: #fff;
+      }
+
+      .detail-page-v6 .customizer-side-header {
+        min-height: 68px;
+      }
+
+      .detail-page-v6 .customizer-content-side {
+        height: calc(100vh - 68px);
+        overflow: auto;
+        padding-bottom: max(28px, env(safe-area-inset-bottom));
+      }
+
+      .detail-page-v6 .dock-model-grid {
+        grid-template-columns: 1fr;
+      }
+
+      body.detail-drawer-open {
+        overflow: hidden;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .detail-page-v6 .topbar {
+        display: none;
+      }
+
+      .detail-page-v6 .navbar {
+        height: 64px;
+      }
+
+      .detail-page-v6 .actions .btn-primary,
+      .detail-page-v6 .actions .btn-outline {
+        display: none;
+      }
+
+      .detail-page-v6 .product-detail-shell {
+        width: min(100% - 22px, 760px);
+      }
+
+      .detail-page-v6 .product-info-column {
+        padding: 22px;
+      }
+
+      .detail-page-v6 .big-product-object {
+        height: 260px;
+      }
+
+      .detail-page-v6 h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
-<body class="detail-page-side detail-page-v4 detail-page-v5">
-  <div class="topbar"><div class="container"><span>Ürün detay mockup · B2B bilgi talebi odaklı</span><span>Sepet / fiyat / ödeme yoktur</span></div></div>
-  <header class="site-header"><div class="container navbar"><a class="brand" href="index.html"><span class="brand-mark"></span><span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span></a><nav class="nav-links"><a href="index.html">Anasayfa</a><a href="urunler.html">Ürünler</a><a href="index.html#catalog">Türkiye Kataloğu</a><a class="active" href="urun-detay.html">Ürün Detay</a><a href="index.html#lead">B2B Talep</a></nav><div class="actions"><button class="btn btn-outline" type="button" data-open-customizer>Özelleştir</button><a class="btn btn-primary" href="#lead-detail">Bu ürün için bilgi al</a><button class="mobile-toggle">☰</button></div></div></header>
+<body class="detail-page-side detail-page-v6">
+  <div class="topbar">
+    <div class="container">
+      <span>Ürün detay mockup · B2B bilgi talebi odaklı</span>
+      <span>Sepet / fiyat / ödeme yoktur</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Ana menü">
+        <a href="index.html">Anasayfa</a>
+        <a href="urunler.html">Ürünler</a>
+        <a href="index.html#catalog">Türkiye Kataloğu</a>
+        <a class="active" href="urun-detay.html">Ürün Detay</a>
+        <a href="index.html#lead">B2B Talep</a>
+      </nav>
+      <div class="actions">
+        <button class="btn btn-outline" type="button" data-open-customizer>Özelleştir</button>
+        <a class="btn btn-primary" href="#lead-detail">Bu ürün için bilgi al</a>
+        <button class="mobile-toggle" type="button" aria-label="Menü">☰</button>
+      </div>
+    </div>
+  </header>
 
   <main class="product-detail-shell">
     <article class="product-detail-canvas">
-      <section class="product-detail-left">
+      <section class="product-detail-left" aria-labelledby="product-title">
         <div class="product-media-column">
-          <div class="big-product-object"><img id="mainProductImage" src="assets/images/prod-miami.jpg" alt="Atlanta kapı kolu ürün görseli"></div>
+          <div class="big-product-object">
+            <img id="mainProductImage" src="assets/images/prod-miami.jpg" alt="Atlanta kapı kolu ürün görseli">
+          </div>
           <div class="side-thumbs" aria-label="Ürün görselleri">
             <button class="active" type="button"><img data-thumb src="assets/images/prod-miami.jpg" alt="Ürün görseli"></button>
-            <button type="button"><img data-thumb src="assets/images/table-structure.jpg" alt="Teknik çizim örneği"></button>
+            <button type="button"><img data-thumb src="assets/images/table-structure.jpg" alt="Ölçü çizimi örneği"></button>
             <button type="button"><img data-thumb src="assets/images/cat-miami-scene.jpg" alt="Mekan içinde ürün örneği"></button>
           </div>
         </div>
 
         <div class="product-info-column">
-          <div class="hoppe-style-mark"><strong>3G</strong><span>HOPPE Türkiye B2B Katalog Merkezi</span></div>
-          <p class="product-eyebrow">İç mekan kapıları için kol takımları</p>
-          <h1>Atlanta</h1>
-          <p class="product-short-desc">HOPPE pirinç kol takımı; iç kapılarda rozetli kullanım, farklı yüzey seçenekleri ve kilit tipleriyle B2B talep sürecine taşınır.</p>
+          <div class="hoppe-style-mark">
+            <strong>3G</strong>
+            <span>HOPPE Türkiye B2B Katalog Merkezi</span>
+          </div>
+          <p class="product-eyebrow">İç mekan kapıları için kol takımı</p>
+          <h1 id="product-title">Atlanta</h1>
           <button class="btn btn-dark mobile-customize-trigger" type="button" data-open-customizer>Ürünü özelleştir</button>
-          <a class="series-link" href="#further-series">Serinin diğer versiyonlarını gör</a>
+          <p class="product-short-desc">Pirinç gövdeli, rozetli kapı kolu seti. Proje, bayi ve üretici taleplerinde yüzey, kilit tipi ve kapı kalınlığı seçenekleriyle net bir ürün konfigürasyonu sunar.</p>
+          <a class="series-link" href="#further-series">Further versions alanına git</a>
+
           <div class="product-meta-card">
             <div class="category-line"><span>duraplus</span></div>
             <dl>
               <div><dt>Model</dt><dd data-summary="model">M1530/23KV/23KVS</dd></div>
               <div><dt>Ürün no</dt><dd>2736177</dd></div>
-              <div><dt>Yüzey</dt><dd data-summary="finish">F41-R satin chrome · Resista</dd></div>
-              <div><dt>Kilit</dt><dd data-summary="lock">BB · Oda kapısı</dd></div>
+              <div><dt>Finish</dt><dd data-summary="finish">F41-R satin chrome · Resista</dd></div>
+              <div><dt>Keyhole</dt><dd data-summary="lock">BB · Oda kapısı</dd></div>
             </dl>
           </div>
+
           <div class="product-action-row">
             <a class="btn btn-dark" href="#lead-detail">Bu ürün için bilgi al</a>
-            <a class="btn btn-outline" href="#downloads">Ürün bilgi föyünü indir</a>
+            <a class="btn btn-outline" href="#downloads">Downloads</a>
           </div>
         </div>
       </section>
@@ -49,121 +904,243 @@
       <section class="below-detail-blocks">
         <div class="product-description-card">
           <details class="detail-accordion clean" open>
-            <summary><span>Ürün açıklaması</span><small>Kısa kullanım ve teknik özet</small></summary>
+            <summary><span>Product description</span><small>Kullanım, seri ve proje bağlamı</small></summary>
             <div class="description-content">
-              <p>Atlanta serisi iç kapı kol takımı; konut, ofis, otel ve proje iç kapı uygulamalarında kullanılmak üzere kurgulanmış B2B katalog ürünüdür. Bu sayfada fiyat veya sepet yerine, seçilen varyasyon 3G talep formuna aktarılır.</p>
+              <p>Atlanta serisi, iç mekan kapı uygulamalarında sade rozet formu ve dayanıklı yüzey seçenekleriyle kullanılmak üzere kurgulanmış bir HOPPE ürün detay mockupıdır. Sayfa fiyat ya da sepet akışı yerine, seçilen varyasyonu 3G B2B talep sürecine taşır.</p>
               <ul>
-                <li>İç mekan kapılarında rozetli kol takımı kullanımı</li>
-                <li>BB, OB, PZ ve WC/SK-OL gibi kilit/uygulama seçenekleri</li>
-                <li>Farklı yüzey seçenekleri ve Resista yüzey notu</li>
-                <li>Proje, bayi ve üretici talepleri için 3G üzerinden B2B iletişim</li>
+                <li>Konut, ofis, otel ve proje iç kapı uygulamalarına uygun yapı.</li>
+                <li>BB, PZ, WC/SK-OL ve OB gibi farklı keyhole seçenekleri.</li>
+                <li>Yüzey, kapı kalınlığı ve spindle bilgileriyle teknik ön değerlendirme.</li>
               </ul>
-              <div class="feature-note-grid">
-                <article><b>Quick-Fit</b><span>Hızlı montaj bağlantısı için teknik not alanı.</span></article>
-                <article><b>Resista</b><span>Yüzey dayanımı ve bakım avantajı için açıklama alanı.</span></article>
+            </div>
+          </details>
+
+          <details class="detail-accordion clean" open>
+            <summary><span>Product details</span><small>Model, malzeme, ölçü ve uygulama bilgileri</small></summary>
+            <div class="detail-facts-matrix compact">
+              <div><b>Model</b><span data-summary="model">M1530/23KV/23KVS</span></div>
+              <div><b>Material</b><span>Brass</span></div>
+              <div><b>Finish</b><span data-summary="finish">F41-R satin chrome · Resista</span></div>
+              <div><b>Keyhole</b><span data-summary="lock">BB · Oda kapısı</span></div>
+              <div><b>Spindle</b><span>8 mm</span></div>
+              <div><b>Door thickness</b><span>37-42 mm</span></div>
+              <div><b>Application</b><span>Interior timber doors</span></div>
+              <div><b>Base</b><span>Polyamide nylon substructure</span></div>
+            </div>
+          </details>
+
+          <details class="detail-accordion clean" open id="downloads">
+            <summary><span>Downloads</span><small>Teknik dokümanlar ve katalog dosyaları</small></summary>
+            <div class="download-groups">
+              <div class="download-group">
+                <h4>Teknik doküman</h4>
+                <a href="#">PDF · Product data sheet</a>
+                <a href="#">PDF · Installation note</a>
               </div>
-              <div class="icon-note-grid">
-                <article><strong>✦</strong><span>Yüksek korozyon dayanımı notu</span></article>
-                <article><strong>↔</strong><span>Kullanım kategorisi ve ölçü bilgisi</span></article>
-                <article><strong>●</strong><span>Masif pirinç / materyal sınıfı</span></article>
+              <div class="download-group">
+                <h4>Katalog</h4>
+                <a href="#">PDF · Türkiye ürün kataloğu</a>
+                <a href="#">PDF · Seri karşılaştırma tablosu</a>
+              </div>
+              <div class="download-group">
+                <h4>Bakım kılavuzu</h4>
+                <a href="#">PDF · Finish care guide</a>
+                <a href="#">PDF · Resista bakım notu</a>
+              </div>
+              <div class="download-group">
+                <h4>Ölçü çizimi</h4>
+                <a href="#">DWG · Technical drawing</a>
+                <a href="#">PDF · Dimension sheet</a>
               </div>
             </div>
           </details>
 
           <details class="detail-accordion clean" open>
-            <summary><span>Ürün detayları</span><small>Model, ürün tipi, standart ve ölçü bilgileri</small></summary>
-            <div class="detail-facts-matrix compact">
-              <div><b>Ürün tipi</b><span>Kapı kolu takımı</span></div>
-              <div><b>Seri</b><span>Atlanta</span></div>
-              <div><b>Materyal</b><span>Pirinç</span></div>
-              <div><b>Yüzey</b><span data-summary="finish">F41-R satin chrome · Resista</span></div>
-              <div><b>Kilit deliği</b><span data-summary="lock">BB · Oda kapısı</span></div>
-              <div><b>Kapı kalınlığı</b><span>37–42 mm</span></div>
-              <div><b>Kol demiri</b><span>8 mm</span></div>
-              <div><b>Katalog notu</b><span>Türkiye ürün kataloğu üzerinden referanslanır</span></div>
+            <summary><span>Videos</span><small>Montaj ve ürün anlatımı</small></summary>
+            <div class="video-placeholder">
+              <span>PLAY</span>
+              <p>Montaj adımları, yüzey seçenekleri ve doğru keyhole seçimi için kısa ürün anlatım videosu alanı.</p>
             </div>
           </details>
-
-          <details class="detail-accordion clean" open id="downloads">
-            <summary><span>İndirmeler</span><small>PDF, görsel ve teknik çizim dosyaları</small></summary>
-            <div class="download-groups">
-              <div class="download-group"><h4>Ürün bilgi föyü</h4><a href="#">PDF · Ürün özellikleri ve katalog referansı</a></div>
-              <div class="download-group"><h4>Ürün görselleri</h4><a href="#">JPG · Web kullanımı için ürün görseli</a><a href="#">PNG · Şeffaf ürün görseli</a></div>
-              <div class="download-group"><h4>Teknik çizimler</h4><a href="#">DWG · Teknik çizim</a><a href="#">DXF · Teknik çizim</a><a href="#">PDF · Ölçü çizimi</a></div>
-            </div>
-          </details>
-
-          <details class="detail-accordion clean">
-            <summary><span>Videolar</span><small>Montaj, kullanım veya ürün tanıtım videoları</small></summary>
-            <div class="video-placeholder"><span>Video alanı</span><p>Gerçek sitede montaj videosu, kullanım videosu veya HOPPE/3G ürün anlatımı burada gösterilebilir.</p></div>
-          </details>
-        </div>
-
-        <div class="designer-card">
-          <img src="assets/images/cat-miami-scene.jpg" alt="Mekan içinde kapı kolu örneği">
-          <div><h3>3G Ürün Seçim Desteği</h3><p>Renk, yüzey, kilit tipi ve proje kullanımına göre doğru ürün kombinasyonunu birlikte netleştirelim.</p><a class="btn btn-outline" href="#lead-detail">Talep oluştur</a></div>
         </div>
       </section>
 
       <section class="further-series" id="further-series">
-        <div class="container-ish"><h2>Atlanta serisinin diğer versiyonları</h2>
+        <div class="container-ish">
+          <h2>Further versions</h2>
           <div class="series-grid">
-            <a class="series-card" href="#"><img src="assets/images/prod-miami.jpg" alt="Kapı kolu seti"><span>İç kapı kol setleri</span></a>
-            <a class="series-card" href="#"><img src="assets/images/austin-product.jpg" alt="HCS sistemi"><span>HCS · Compact System</span></a>
-            <a class="series-card" href="#"><img src="assets/images/hamburg-product.jpg" alt="Profil kapı kolu"><span>Profil kapı kol setleri</span></a>
-            <a class="series-card" href="#"><img src="assets/images/prod-window-austin.jpg" alt="Pencere kolu"><span>Pencere kolları</span></a>
-            <a class="series-card" href="#"><img src="assets/images/psk.jpg" alt="PSK kolları"><span>PSK sürme kolları</span></a>
-            <a class="series-card" href="#"><img src="assets/images/hs-lift-slide.jpg" alt="Kaldır sür"><span>Kaldır-sür kol setleri</span></a>
+            <a class="series-card" href="#"><img src="assets/images/prod-miami.jpg" alt="Kapı kolu seti"><span>Atlanta BB rozetli set</span></a>
+            <a class="series-card" href="#"><img src="assets/images/austin-product.jpg" alt="HCS sistemi"><span>Atlanta PZ profil silindirli set</span></a>
+            <a class="series-card" href="#"><img src="assets/images/hamburg-product.jpg" alt="Profil kapı kolu"><span>Atlanta WC/SK-OL banyo seti</span></a>
+            <a class="series-card" href="#"><img src="assets/images/prod-window-austin.jpg" alt="Pencere kolu"><span>Uyumlu pencere kolu</span></a>
+            <a class="series-card" href="#"><img src="assets/images/psk.jpg" alt="PSK kolları"><span>PSK sürme kol alternatifi</span></a>
+            <a class="series-card" href="#"><img src="assets/images/hs-lift-slide.jpg" alt="Kaldır sür"><span>Kaldır-sür seri alternatifi</span></a>
           </div>
         </div>
       </section>
 
-      <section class="detail-contact-band" id="lead-detail"><h2>Bu ürün hakkında 3G’den bilgi alın</h2><p>Seçilen model, yüzey ve kilit önerisi form ile birlikte 3G ekibine aktarılır.</p><form class="form-grid side-layout-form"><div class="field"><label>Ad Soyad</label><input placeholder="Adınız Soyadınız"></div><div class="field"><label>Firma</label><input placeholder="Firma adınız"></div><div class="field"><label>Telefon</label><input placeholder="+90"></div><div class="field"><label>Firma tipi</label><select><option>Bayi</option><option>Kapı / pencere üreticisi</option><option>Mimarlık ofisi</option><option>Proje firması</option></select></div><div class="field"><label>Seçilen model</label><input id="formModel" value="M1530/23KV/23KVS" readonly></div><div class="field"><label>Yüzey / kilit</label><input id="formFinishLock" value="F41-R satin chrome · Resista / BB · Oda kapısı" readonly></div><div class="field full"><label>Mesaj</label><textarea placeholder="Adet, proje veya kullanım bilgisini yazın"></textarea></div><button class="btn btn-primary" type="button">Talebi Gönder</button></form></section>
+      <section class="detail-contact-band" id="lead-detail">
+        <h2>Bu ürün hakkında 3G’den bilgi alın</h2>
+        <p>Seçilen model, yüzey ve kilit önerisi form ile birlikte 3G ekibine aktarılır.</p>
+        <form class="form-grid side-layout-form">
+          <div class="field"><label>Ad Soyad</label><input placeholder="Adınız Soyadınız"></div>
+          <div class="field"><label>Firma</label><input placeholder="Firma adınız"></div>
+          <div class="field"><label>Telefon</label><input placeholder="+90"></div>
+          <div class="field"><label>Firma tipi</label><select><option>Bayi</option><option>Kapı / pencere üreticisi</option><option>Mimarlık ofisi</option><option>Proje firması</option></select></div>
+          <div class="field"><label>Seçilen model</label><input id="formModel" value="M1530/23KV/23KVS" readonly></div>
+          <div class="field"><label>Yüzey / kilit</label><input id="formFinishLock" value="F41-R satin chrome · Resista / BB · Oda kapısı" readonly></div>
+          <div class="field full"><label>Mesaj</label><textarea placeholder="Adet, proje veya kullanım bilgisini yazın"></textarea></div>
+          <button class="btn btn-primary" type="button">Talebi Gönder</button>
+        </form>
+      </section>
     </article>
 
     <aside class="customizer-dock is-open" data-customizer-panel aria-label="Ürün özelleştirme paneli">
-      <div class="customizer-side-header"><div class="customizer-title-wrap"><div class="sliders-mark"><span></span><span></span></div><h2>Customise product</h2></div><button class="customizer-close" type="button" data-close-customizer aria-label="Paneli kapat">×</button></div>
-      <div class="customizer-open-note" data-customizer-closed-note hidden><div><strong>Ürün seçenekleri kapalı</strong><span>Model, renk/yüzey ve kilit önerilerini görmek için açın.</span></div><button class="btn btn-dark" type="button" data-open-customizer>Özelleştir</button></div>
+      <div class="customizer-side-header">
+        <div class="customizer-title-wrap">
+          <div class="sliders-mark" aria-hidden="true"><span></span><span></span></div>
+          <h2>Customise product</h2>
+        </div>
+        <button class="customizer-close" type="button" data-close-customizer aria-label="Paneli kapat">×</button>
+      </div>
+
       <div class="customizer-content-side" data-customizer-content>
-        <div class="side-block"><h3>Available models</h3>
+        <div class="side-block">
+          <h3>Available models</h3>
           <div class="dock-model-grid">
-            <button class="model-option-dock" type="button" data-choice-type="model" data-choice-value="M1530/42K/42KS · aluminium quick-fit" data-model-image="assets/images/prod-miami.jpg"><img src="assets/images/prod-miami.jpg" alt="Aluminium model"><span>Set on rose aluminium HOPPE quick-fit connection M1530/42K/42KS</span></button>
-            <button class="model-option-dock" type="button" data-choice-type="model" data-choice-value="M1530/42KV/42KVS · aluminium quick-fit" data-model-image="assets/images/prod-austin.jpg"><img src="assets/images/prod-austin.jpg" alt="Aluminium KV model"><span>Set on rose aluminium HOPPE quick-fit connection M1530/42KV/42KVS</span></button>
-            <button class="model-option-dock" type="button" data-choice-type="model" data-choice-value="M1530/23K/23KS · brass quick-fit" data-model-image="assets/images/miami-product.jpg"><img src="assets/images/miami-product.jpg" alt="Brass model"><span>Set on rose brass HOPPE quick-fit connection M1530/23K/23KS</span></button>
-            <button class="model-option-dock selected" type="button" data-choice-type="model" data-choice-value="M1530/23KV/23KVS · brass quick-fit" data-model-image="assets/images/prod-miami.jpg"><img src="assets/images/prod-miami.jpg" alt="Selected brass model"><span>Set on rose brass HOPPE quick-fit connection M1530/23KV/23KVS</span></button>
+            <button class="model-option-dock" type="button" data-choice-type="model" data-choice-value="M1530/42K/42KS · aluminium quick-fit" data-model-image="assets/images/prod-miami.jpg"><img src="assets/images/prod-miami.jpg" alt="Aluminium model"><span>M1530/42K/42KS · aluminium quick-fit</span></button>
+            <button class="model-option-dock" type="button" data-choice-type="model" data-choice-value="M1530/42KV/42KVS · aluminium quick-fit" data-model-image="assets/images/prod-austin.jpg"><img src="assets/images/prod-austin.jpg" alt="Aluminium KV model"><span>M1530/42KV/42KVS · aluminium quick-fit</span></button>
+            <button class="model-option-dock" type="button" data-choice-type="model" data-choice-value="M1530/23K/23KS · brass quick-fit" data-model-image="assets/images/miami-product.jpg"><img src="assets/images/miami-product.jpg" alt="Brass model"><span>M1530/23K/23KS · brass quick-fit</span></button>
+            <button class="model-option-dock selected" type="button" data-choice-type="model" data-choice-value="M1530/23KV/23KVS · brass quick-fit" data-model-image="assets/images/prod-miami.jpg"><img src="assets/images/prod-miami.jpg" alt="Selected brass model"><span>M1530/23KV/23KVS · brass quick-fit</span></button>
           </div>
         </div>
+
         <div class="dock-option-row material-row"><div class="dock-row-label">Material</div><div class="dock-row-value">brass</div></div>
-        <details class="dock-option-row interactive-row" open><summary><div class="dock-row-label">Finish</div><div class="dock-row-value" data-summary="finish">F41-R satin chrome · Resista</div></summary><div class="dock-choice-grid"><button class="finish-option selected" type="button" data-choice-type="finish" data-choice-value="F41-R satin chrome · Resista"><span class="swatch swatch-chrome"></span><b>F41-R</b><small>satin chrome · Resista</small></button><button class="finish-option" type="button" data-choice-type="finish" data-choice-value="F71 polished brass"><span class="swatch swatch-bronze"></span><b>F71</b><small>polished brass</small></button><button class="finish-option" type="button" data-choice-type="finish" data-choice-value="F9714M matt black"><span class="swatch swatch-black"></span><b>F9714M</b><small>matt black</small></button><button class="finish-option" type="button" data-choice-type="finish" data-choice-value="F1 aluminium silver"><span class="swatch swatch-silver"></span><b>F1</b><small>aluminium silver</small></button></div></details>
-        <details class="dock-option-row interactive-row" open><summary><div class="dock-row-label">Keyhole</div><div class="dock-row-value" data-summary="lock">BB · Oda kapısı</div></summary><div class="dock-choice-grid"><button class="lock-option selected" type="button" data-choice-type="lock" data-choice-value="BB · Oda kapısı"><b>BB</b><span>Oda kapısı</span><small>Standart iç kapı kullanımı</small></button><button class="lock-option" type="button" data-choice-type="lock" data-choice-value="PZ · Profil silindirli kilit"><b>PZ</b><span>Profil silindirli</span><small>Proje / güvenlik kullanımı</small></button><button class="lock-option" type="button" data-choice-type="lock" data-choice-value="WC/SK-OL · Banyo WC"><b>WC</b><span>Banyo/WC</span><small>İçerden mandallı kullanım</small></button><button class="lock-option" type="button" data-choice-type="lock" data-choice-value="OB · Klasik anahtar"><b>OB</b><span>Klasik anahtar</span><small>Geleneksel kilit tipi</small></button></div></details>
-        <div class="dock-option-row material-row"><div class="dock-row-label">Door thickness</div><div class="dock-row-value">37–42 mm</div></div>
-        <div class="dock-option-row material-row"><div class="dock-row-label">Spindle size</div><div class="dock-row-value">8 mm</div></div>
-        <div class="dock-option-row material-row"><div class="dock-row-label">Base</div><div class="dock-row-value">polyamide nylon</div></div>
-        <div class="dock-selection-summary"><strong>Seçim özeti</strong><p><span data-summary="model">M1530/23KV/23KVS</span><br><span data-summary="finish">F41-R satin chrome · Resista</span><br><span data-summary="lock">BB · Oda kapısı</span></p><a class="btn btn-dark" href="#lead-detail">Bu seçimle bilgi al</a><button class="btn btn-outline reset-btn" type="button">Reset filter</button></div>
+        <details class="dock-option-row interactive-row" open>
+          <summary><div class="dock-row-label">Finish</div><div class="dock-row-value" data-summary="finish">F41-R satin chrome · Resista</div></summary>
+          <div class="dock-choice-grid">
+            <button class="finish-option selected" type="button" data-choice-type="finish" data-choice-value="F41-R satin chrome · Resista"><span class="swatch swatch-chrome"></span><b>F41-R</b><small>satin chrome · Resista</small></button>
+            <button class="finish-option" type="button" data-choice-type="finish" data-choice-value="F71 polished brass"><span class="swatch swatch-bronze"></span><b>F71</b><small>polished brass</small></button>
+            <button class="finish-option" type="button" data-choice-type="finish" data-choice-value="F9714M matt black"><span class="swatch swatch-black"></span><b>F9714M</b><small>matt black</small></button>
+            <button class="finish-option" type="button" data-choice-type="finish" data-choice-value="F1 aluminium silver"><span class="swatch swatch-silver"></span><b>F1</b><small>aluminium silver</small></button>
+          </div>
+        </details>
+
+        <details class="dock-option-row interactive-row" open>
+          <summary><div class="dock-row-label">Keyhole</div><div class="dock-row-value" data-summary="lock">BB · Oda kapısı</div></summary>
+          <div class="dock-choice-grid">
+            <button class="lock-option selected" type="button" data-choice-type="lock" data-choice-value="BB · Oda kapısı"><b>BB</b><span>Oda kapısı</span><small>Standart iç kapı kullanımı</small></button>
+            <button class="lock-option" type="button" data-choice-type="lock" data-choice-value="PZ · Profil silindirli kilit"><b>PZ</b><span>Profil silindirli</span><small>Proje / güvenlik kullanımı</small></button>
+            <button class="lock-option" type="button" data-choice-type="lock" data-choice-value="WC/SK-OL · Banyo WC"><b>WC</b><span>Banyo/WC</span><small>İçerden mandallı kullanım</small></button>
+            <button class="lock-option" type="button" data-choice-type="lock" data-choice-value="OB · Klasik anahtar"><b>OB</b><span>Klasik anahtar</span><small>Geleneksel kilit tipi</small></button>
+          </div>
+        </details>
+
+        <div class="dock-option-row material-row"><div class="dock-row-label">Door thickness</div><div class="dock-row-value">37-42 mm</div></div>
+        <div class="dock-option-row material-row"><div class="dock-row-label">Spindle</div><div class="dock-row-value">8 mm</div></div>
+        <div class="dock-option-row material-row"><div class="dock-row-label">Application</div><div class="dock-row-value">Interior timber doors</div></div>
+
+        <div class="dock-selection-summary">
+          <strong>Seçim özeti</strong>
+          <p><span data-summary="model">M1530/23KV/23KVS</span><br><span data-summary="finish">F41-R satin chrome · Resista</span><br><span data-summary="lock">BB · Oda kapısı</span></p>
+          <a class="btn btn-dark" href="#lead-detail">Bu seçimle bilgi al</a>
+          <button class="btn btn-outline reset-btn" type="button">Reset filter</button>
+        </div>
       </div>
     </aside>
   </main>
 
-  <footer class="footer"><div class="container"><div class="footer-grid"><div><a class="brand" href="index.html"><span class="brand-mark"></span><span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span></a><p>Ürün detay sayfası mockup’ı. Elementor single template + özel meta alanlarıyla uygulanabilir.</p></div><div><h4>Ürün</h4><a href="urunler.html">Listeye dön</a><a href="#lead-detail">B2B bilgi al</a></div><div><h4>Bilgi</h4><a href="#downloads">İndirmeler</a><a href="#further-series">Seri versiyonları</a></div><div><h4>İletişim</h4><a href="index.html#lead">B2B talep</a></div></div><div class="footer-bottom"><span>© 3G mockup</span><span>Ürün detay = katalog + lead form</span></div></div></footer>
-  <script src="assets/js/app.js"></script>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><a class="brand" href="index.html"><span class="brand-mark"></span><span>3G Aksesuar<small>HOPPE Türkiye Katalog Merkezi</small></span></a><p>Ürün detay sayfası mockup’ı. Elementor single template + özel meta alanlarıyla uygulanabilir.</p></div>
+        <div><h4>Ürün</h4><a href="urunler.html">Listeye dön</a><a href="#lead-detail">B2B bilgi al</a></div>
+        <div><h4>Bilgi</h4><a href="#downloads">İndirmeler</a><a href="#further-series">Seri versiyonları</a></div>
+        <div><h4>İletişim</h4><a href="index.html#lead">B2B talep</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 3G mockup</span><span>Ürün detay = katalog + lead form</span></div>
+    </div>
+  </footer>
+
   <script>
     (function(){
-      const panel=document.querySelector('[data-customizer-panel]');
-      const content=document.querySelector('[data-customizer-content]');
-      const note=document.querySelector('[data-customizer-closed-note]');
-      function syncInitial(){
-        if(!panel) return;
-        const isMobile=window.matchMedia('(max-width: 900px)').matches;
-        panel.classList.toggle('is-open', !isMobile);
-        if(content) content.hidden=isMobile;
-        if(note) note.hidden=!isMobile;
+      const body = document.body;
+      const panel = document.querySelector('[data-customizer-panel]');
+      const openButtons = document.querySelectorAll('[data-open-customizer]');
+      const closeButtons = document.querySelectorAll('[data-close-customizer]');
+      const desktopQuery = window.matchMedia('(min-width: 901px)');
+      const summary = {
+        model: 'M1530/23KV/23KVS',
+        finish: 'F41-R satin chrome · Resista',
+        lock: 'BB · Oda kapısı'
+      };
+
+      function setPanelOpen(isOpen) {
+        if (!panel) return;
+        panel.classList.toggle('is-open', isOpen);
+        body.classList.toggle('detail-drawer-open', isOpen && !desktopQuery.matches);
       }
-      syncInitial();
-      window.addEventListener('resize', syncInitial, {passive:true});
-      document.querySelectorAll('[data-thumb]').forEach(img=>img.addEventListener('click',()=>{
-        document.querySelectorAll('[data-thumb]').forEach(i=>i.closest('button')?.classList.remove('active'));
-        img.closest('button')?.classList.add('active');
-      }));
+
+      function syncPanelForViewport() {
+        setPanelOpen(desktopQuery.matches);
+      }
+
+      function shortLock(value) {
+        const parts = (value || '').split(' · ');
+        return parts.length > 1 ? `${parts[0]} · ${parts[1]}` : value;
+      }
+
+      function updateSummary() {
+        document.querySelectorAll('[data-summary="model"]').forEach((item) => { item.textContent = summary.model; });
+        document.querySelectorAll('[data-summary="finish"]').forEach((item) => { item.textContent = summary.finish; });
+        document.querySelectorAll('[data-summary="lock"]').forEach((item) => { item.textContent = summary.lock; });
+        const formModel = document.getElementById('formModel');
+        const formFinishLock = document.getElementById('formFinishLock');
+        if (formModel) formModel.value = summary.model;
+        if (formFinishLock) formFinishLock.value = `${summary.finish} / ${shortLock(summary.lock)}`;
+      }
+
+      syncPanelForViewport();
+      window.addEventListener('resize', syncPanelForViewport, { passive: true });
+      openButtons.forEach((button) => button.addEventListener('click', () => setPanelOpen(true)));
+      closeButtons.forEach((button) => button.addEventListener('click', () => setPanelOpen(false)));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setPanelOpen(false);
+      });
+
+      panel?.addEventListener('click', (event) => {
+        if (!desktopQuery.matches && event.target === panel) setPanelOpen(false);
+      });
+
+      document.querySelectorAll('[data-thumb]').forEach((image) => {
+        image.addEventListener('click', () => {
+          document.querySelectorAll('[data-thumb]').forEach((item) => item.closest('button')?.classList.remove('active'));
+          image.closest('button')?.classList.add('active');
+          const main = document.getElementById('mainProductImage');
+          if (main) main.src = image.src;
+        });
+      });
+
+      document.querySelectorAll('[data-choice-type]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const type = button.dataset.choiceType;
+          if (!type) return;
+          summary[type] = button.dataset.choiceValue || button.textContent.trim();
+          document.querySelectorAll(`[data-choice-type="${type}"]`).forEach((item) => item.classList.remove('selected'));
+          button.classList.add('selected');
+
+          if (type === 'model') {
+            const image = button.dataset.modelImage;
+            const main = document.getElementById('mainProductImage');
+            if (image && main) main.src = image;
+          }
+
+          updateSummary();
+        });
+      });
+
+      updateSummary();
     })();
   </script>
 </body>
