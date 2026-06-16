@@ -462,7 +462,7 @@
     }
 
     .detail-page-v6 .detail-contact-band {
-      margin: 28px clamp(34px, 5.2vw, 88px) 0;
+      margin: 28px clamp(34px, 5.2vw, 88px) 64px;
       max-width: none;
     }
 
@@ -823,11 +823,11 @@
       }
 
       .detail-page-v6 .mobile-customize-trigger {
-        display: inline-flex;
+        display: none;
       }
 
       .detail-page-v6 .product-action-row {
-        display: none;
+        display: flex;
       }
 
       .detail-page-v6 .product-meta-card dl,
@@ -923,6 +923,7 @@
       .detail-page-v6 .detail-contact-band {
         margin-right: 0;
         margin-left: 0;
+        margin-bottom: 44px;
       }
 
       body.detail-drawer-open {
@@ -955,6 +956,11 @@
       .detail-page-v6 h1 {
         font-size: 36px;
       }
+
+      .detail-page-v6 .product-action-row .btn {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -980,7 +986,6 @@
         <a href="index.html#lead">B2B Talep</a>
       </nav>
       <div class="actions">
-        <button class="btn btn-outline" type="button" data-open-customizer>Özelleştir</button>
         <a class="btn btn-primary" href="#lead-detail">Bu ürün için bilgi al</a>
         <button class="mobile-toggle" type="button" aria-label="Menü">☰</button>
       </div>
@@ -1008,7 +1013,6 @@
           </div>
           <p class="product-eyebrow">İç mekan kapıları için kol takımı</p>
           <h1 id="product-title">Atlanta</h1>
-          <button class="btn btn-dark mobile-customize-trigger" type="button" data-open-customizer>Ürünü özelleştir</button>
           <p class="product-short-desc">Pirinç gövdeli, rozetli kapı kolu seti. Proje, bayi ve üretici taleplerinde yüzey, kilit tipi ve kapı kalınlığı seçenekleriyle net bir ürün konfigürasyonu sunar.</p>
           <a class="series-link" href="#further-series">Further versions alanına git</a>
 
@@ -1024,7 +1028,7 @@
 
           <div class="product-action-row">
             <a class="btn btn-dark" href="#lead-detail">Bu ürün için bilgi al</a>
-            <a class="btn btn-outline" href="#downloads">Downloads</a>
+            <button class="btn btn-outline" type="button" data-open-customizer>Özelleştir</button>
           </div>
         </div>
       </section>
